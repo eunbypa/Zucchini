@@ -31,7 +31,7 @@ spring:
     hikari:
       password: zucchini
       username: zucchini
-    url: jdbc:mysql://i9a209.p.ssafy.io:3308/zucchini?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true
+    url: jdbc:mysql://${DB_URL:PORT}/zucchini?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true
   data:
     web:
       pageable:
@@ -45,12 +45,12 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: zucchini0209@gmail.com
-    password: hodjzqjksgtvamss
+    password: ${EMAIL_PASSWORD}
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
   redis:
-    host: i9a209.p.ssafy.io
+    host: ${REDIS_URL}
     port: 6379
 logging:
   level:
@@ -85,11 +85,11 @@ build:
 jwt:
   expiration: '1296000000'
   cookieName: zucchiniCookie
-  secret: dyAeHubOOc8KaOfYB6XEQoEj1QzRlVgtjNL8PYs1A1tymZvvqkcEU7L1imkKHeDa
+  secret: ${JWT_SECRET}
 springfox:
   documentation:
     swagger:
       use-model-v3: 'false'
 openvidu:
-  url: 'https://i9a209.p.ssafy.io:8443'
-  secret: 'pikapikapikachu'
+  url: ${OPENVIDU_URL:PORT}
+  secret: ${OPENVIDU_SECRET}
